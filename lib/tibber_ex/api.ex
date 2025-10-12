@@ -8,6 +8,7 @@ defmodule TibberEx.Api do
 
   @endpoint "/v1-beta/gql"
 
+  @spec price_info(Tesla.Client.t()) :: map() | :error
   def price_info(client) do
     case query(
            client,
@@ -27,9 +28,11 @@ defmodule TibberEx.Api do
           "Expected status code 200. status code was: #{inspect(status)} - #{inspect(body)}"
         )
 
+        :error
+
       {:error, error} ->
         Logger.error("Error while retrieving price info: #{inspect(error)}")
-        {}
+        :error
     end
   end
 
