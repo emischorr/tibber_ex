@@ -3,7 +3,7 @@ defmodule TibberEx do
   Documentation for `TibberEx`.
   """
 
-  def priceInfo(token) do
+  def price_info(token) do
     token
     |> TibberEx.Client.new()
     |> TibberEx.Api.price_info()
