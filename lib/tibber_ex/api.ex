@@ -4,7 +4,6 @@ defmodule TibberEx.Api do
   https://developer.tibber.com/docs/reference
   """
   require Logger
-  use Tesla, docs: false
 
   @endpoint "/v1-beta/gql"
 
@@ -37,7 +36,7 @@ defmodule TibberEx.Api do
   end
 
   defp gql_query(client, query_string) do
-    post(client, @endpoint, ~s<{"query": "#{query_string}"}>)
+    Tesla.post(client, @endpoint, ~s<{"query": "#{query_string}"}>)
   end
 
   defp to_datetime(string) do
