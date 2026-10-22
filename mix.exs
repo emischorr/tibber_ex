@@ -4,7 +4,7 @@ defmodule TibberEx.MixProject do
   def project do
     [
       app: :tibber_ex,
-      version: "0.2.1",
+      version: "0.2.2",
       name: "TibberEx",
       description: "An opinionated wrapper for the Tibber API",
       source_url: "https://github.com/emischorr/tibber_ex",

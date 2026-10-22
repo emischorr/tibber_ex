@@ -10,7 +10,7 @@ defmodule TibberEx.Api do
 
   @spec price_info(Tesla.Client.t()) :: map() | :error
   def price_info(client) do
-    case query(
+    case gql_query(
            client,
            "{viewer {homes {currentSubscription {priceInfo(resolution: QUARTER_HOURLY) {today {total energy tax startsAt } tomorrow {total energy tax startsAt} }}}}}"
          ) do
@@ -36,7 +36,7 @@ defmodule TibberEx.Api do
     end
   end
 
-  defp query(client, query_string) do
+  defp gql_query(client, query_string) do
     post(client, @endpoint, ~s<{"query": "#{query_string}"}>)
   end
 
